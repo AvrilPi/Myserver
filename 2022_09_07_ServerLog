@@ -1,0 +1,158 @@
+2022-09-07 15:06:18.014114 [info]: timer tick
+2022-09-07 15:06:23.014150 [info]: timer tick
+2022-09-07 15:06:28.014193 [info]: timer tick
+2022-09-07 15:06:33.014258 [info]: timer tick
+2022-09-07 15:06:38.014296 [info]: timer tick
+2022-09-07 15:06:43.014333 [info]: timer tick
+2022-09-07 15:06:48.014378 [info]: timer tick
+2022-09-07 15:06:53.014418 [info]: timer tick
+2022-09-07 15:06:58.014490 [info]: timer tick
+2022-09-07 15:07:03.014551 [info]: timer tick
+2022-09-07 15:07:08.014634 [info]: timer tick
+2022-09-07 15:07:13.014669 [info]: timer tick
+2022-09-07 15:07:18.014714 [info]: timer tick
+2022-09-07 15:07:23.014758 [info]: timer tick
+2022-09-07 15:07:25.126614 [info]: deal with the client(127.0.0.1)
+2022-09-07 15:07:25.126649 [info]: adjust timer once
+2022-09-07 15:07:25.126671 [info]: GET / HTTP/1.1
+2022-09-07 15:07:25.126680 [info]: Host: localhost:9006
+2022-09-07 15:07:25.126686 [info]: User-Agent: curl/7.68.0
+2022-09-07 15:07:25.126693 [info]: oop!unknow header: User-Agent: curl/7.68.0
+2022-09-07 15:07:25.126700 [info]: Accept: */*
+2022-09-07 15:07:25.126707 [info]: oop!unknow header: Accept: */*
+2022-09-07 15:07:25.126714 [info]: 
+2022-09-07 15:07:25.126731 [info]: request:HTTP/1.1 200 OK
+
+2022-09-07 15:07:25.126737 [info]: request:HTTP/1.1 200 OK
+Content-Length:586
+
+2022-09-07 15:07:25.126742 [info]: request:HTTP/1.1 200 OK
+Content-Length:586
+Connection:close
+
+2022-09-07 15:07:25.126746 [info]: request:HTTP/1.1 200 OK
+Content-Length:586
+Connection:close
+
+
+2022-09-07 15:07:25.126780 [info]: close fd 16
+2022-09-07 15:07:28.014795 [info]: timer tick
+2022-09-07 15:07:33.014833 [info]: timer tick
+2022-09-07 15:07:38.014882 [info]: timer tick
+2022-09-07 15:07:43.014918 [info]: timer tick
+2022-09-07 15:07:48.014976 [info]: timer tick
+2022-09-07 15:07:53.015032 [info]: timer tick
+2022-09-07 15:07:58.015091 [info]: timer tick
+2022-09-07 15:08:03.015166 [info]: timer tick
+2022-09-07 15:08:08.015211 [info]: timer tick
+2022-09-07 15:08:13.015279 [info]: timer tick
+2022-09-07 15:08:18.015335 [info]: timer tick
+2022-09-07 15:08:23.015391 [info]: timer tick
+2022-09-07 15:08:28.015433 [info]: timer tick
+2022-09-07 15:08:33.015487 [info]: timer tick
+2022-09-07 15:08:33.449593 [info]: deal with the client(127.0.0.1)
+2022-09-07 15:08:33.449627 [info]: adjust timer once
+2022-09-07 15:08:33.449648 [info]: GET / HTTP/1.1
+2022-09-07 15:08:33.449655 [info]: Host: localhost:9006
+2022-09-07 15:08:33.449660 [info]: User-Agent: curl/7.68.0
+2022-09-07 15:08:33.449664 [info]: oop!unknow header: User-Agent: curl/7.68.0
+2022-09-07 15:08:33.449668 [info]: Accept: */*
+2022-09-07 15:08:33.449673 [info]: oop!unknow header: Accept: */*
+2022-09-07 15:08:33.449677 [info]: 
+2022-09-07 15:08:33.449692 [info]: request:HTTP/1.1 200 OK
+
+2022-09-07 15:08:33.449699 [info]: request:HTTP/1.1 200 OK
+Content-Length:586
+
+2022-09-07 15:08:33.449703 [info]: request:HTTP/1.1 200 OK
+Content-Length:586
+Connection:close
+
+2022-09-07 15:08:33.449707 [info]: request:HTTP/1.1 200 OK
+Content-Length:586
+Connection:close
+
+
+2022-09-07 15:08:33.449734 [info]: close fd 16
+2022-09-07 15:08:38.015544 [info]: timer tick
+2022-09-07 15:08:43.015581 [info]: timer tick
+2022-09-07 15:08:48.015619 [info]: timer tick
+2022-09-07 15:08:53.015656 [info]: timer tick
+2022-09-07 15:08:58.015719 [info]: timer tick
+2022-09-07 15:09:03.015784 [info]: timer tick
+2022-09-07 15:09:08.015825 [info]: timer tick
+2022-09-07 15:09:13.015869 [info]: timer tick
+2022-09-07 15:09:18.015911 [info]: timer tick
+2022-09-07 15:09:23.015968 [info]: timer tick
+2022-09-07 15:09:28.016022 [info]: timer tick
+2022-09-07 15:09:33.016070 [info]: timer tick
+2022-09-07 15:09:38.016124 [info]: timer tick
+2022-09-07 15:09:43.016199 [info]: timer tick
+2022-09-07 15:09:48.016263 [info]: timer tick
+2022-09-07 15:09:53.016307 [info]: timer tick
+2022-09-07 15:09:58.016362 [info]: timer tick
+2022-09-07 15:10:03.016417 [info]: timer tick
+2022-09-07 15:10:08.016472 [info]: timer tick
+2022-09-07 15:10:13.016520 [info]: timer tick
+2022-09-07 15:10:18.016559 [info]: timer tick
+2022-09-07 15:10:23.016604 [info]: timer tick
+2022-09-07 15:10:28.016679 [info]: timer tick
+2022-09-07 15:10:33.016720 [info]: timer tick
+2022-09-07 15:10:38.016769 [info]: timer tick
+2022-09-07 15:10:43.016810 [info]: timer tick
+2022-09-07 15:10:48.016870 [info]: timer tick
+2022-09-07 15:10:53.016924 [info]: timer tick
+2022-09-07 15:10:58.016964 [info]: timer tick
+2022-09-07 15:11:03.017023 [info]: timer tick
+2022-09-07 15:11:08.017105 [info]: timer tick
+2022-09-07 15:11:13.017157 [info]: timer tick
+2022-09-07 15:11:18.017194 [info]: timer tick
+2022-09-07 15:11:23.017231 [info]: timer tick
+2022-09-07 15:11:28.017274 [info]: timer tick
+2022-09-07 15:11:33.017321 [info]: timer tick
+2022-09-07 15:11:38.017361 [info]: timer tick
+2022-09-07 15:11:43.017448 [info]: timer tick
+2022-09-07 15:11:48.017493 [info]: timer tick
+2022-09-07 15:11:53.017542 [info]: timer tick
+2022-09-07 15:11:58.017601 [info]: timer tick
+2022-09-07 15:12:03.017634 [info]: timer tick
+2022-09-07 15:12:08.017673 [info]: timer tick
+2022-09-07 15:12:13.017732 [info]: timer tick
+2022-09-07 15:12:18.017778 [info]: timer tick
+2022-09-07 15:12:23.017840 [info]: timer tick
+2022-09-07 15:12:28.017876 [info]: timer tick
+2022-09-07 15:12:33.017914 [info]: timer tick
+2022-09-07 15:12:38.017974 [info]: timer tick
+2022-09-07 15:12:43.018032 [info]: timer tick
+2022-09-07 15:12:48.018092 [info]: timer tick
+2022-09-07 15:12:53.018129 [info]: timer tick
+2022-09-07 15:12:58.018174 [info]: timer tick
+2022-09-07 15:13:03.018230 [info]: timer tick
+2022-09-07 15:13:08.018283 [info]: timer tick
+2022-09-07 15:13:13.018338 [info]: timer tick
+2022-09-07 15:13:18.018376 [info]: timer tick
+2022-09-07 15:13:23.018427 [info]: timer tick
+2022-09-07 15:13:28.018470 [info]: timer tick
+2022-09-07 15:13:33.018507 [info]: timer tick
+2022-09-07 15:13:38.018556 [info]: timer tick
+2022-09-07 15:13:43.018594 [info]: timer tick
+2022-09-07 15:13:48.018635 [info]: timer tick
+2022-09-07 15:13:53.018692 [info]: timer tick
+2022-09-07 15:13:58.018771 [info]: timer tick
+2022-09-07 15:14:03.018822 [info]: timer tick
+2022-09-07 15:14:08.018861 [info]: timer tick
+2022-09-07 15:14:13.018902 [info]: timer tick
+2022-09-07 15:14:18.018968 [info]: timer tick
+2022-09-07 15:14:23.019028 [info]: timer tick
+2022-09-07 15:14:28.019086 [info]: timer tick
+2022-09-07 15:14:33.019129 [info]: timer tick
+2022-09-07 15:14:38.019197 [info]: timer tick
+2022-09-07 15:14:43.019241 [info]: timer tick
+2022-09-07 15:14:48.019286 [info]: timer tick
+2022-09-07 15:14:53.019326 [info]: timer tick
+2022-09-07 15:14:58.019380 [info]: timer tick
+2022-09-07 15:15:03.019466 [info]: timer tick
+2022-09-07 15:15:08.019524 [info]: timer tick
+2022-09-07 15:15:13.019585 [info]: timer tick
+2022-09-07 15:15:18.019625 [info]: timer tick
+2022-09-07 15:15:23.019672 [info]: timer tick
