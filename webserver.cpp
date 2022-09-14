@@ -166,22 +166,47 @@ void WebServer::timer(int connfd, struct sockaddr_in client_address)
     //创建定时器，设置回调函数和超时时间，绑定用户数据，将定时器添加到链表中
     users_timer[connfd].address = client_address;
     users_timer[connfd].sockfd = connfd;
-    util_timer *timer = new util_timer;
+    
+    time_t cur = time(NULL);
+    util_timer* timer = new util_timer;
     timer->user_data = &users_timer[connfd];
     timer->cb_func = cb_func;
-    time_t cur = time(NULL);
     timer->expire = cur + 3 * TIMESLOT;
+    // auto timer = utils.m_timer_tw.add_timer(expire, &users_timer[connfd], cb_func);
     users_timer[connfd].timer = timer;
     utils.m_timer_lst.add_timer(timer);
+    // utils.m_timer_tw.add_timer(timer);
+    /*
+    time_t cur = time(NULL);
+    int timeout = cur + 3 * TIMESLOT;
+    auto &timer = utils.m_timer_tw.add_timer(timeout);
+    timer->user_data = &users_timer[connfd];
+    timer->cb_func = cb_func;
+    users_timer[connfd].timer = timer;
+    */
 }
 
 //若有数据传输，则将定时器往后延迟3个单位
 //并对新的定时器在链表上的位置进行调整
 void WebServer::adjust_timer(util_timer *timer)
 {
+    if (!timer)
+    {
+	return;
+    }
     time_t cur = time(NULL);
     timer->expire = cur + 3 * TIMESLOT;
     utils.m_timer_lst.adjust_timer(timer);
+
+    /*
+    // auto &tmp = utils.m_timer_tw.add_timer(timeout);
+    auto user_data = timer->user_data;
+    auto cb_func = timer->cb_func;
+    // utils.m_timer_tw.del_timer(timer);
+    utils.m_timer_tw.add_timer(expire, user_data, cb_func);
+    utils.m_timer_tw.del_timer(timer);
+    */
+
 
     LOG_INFO("%s", "adjust timer once");
 }

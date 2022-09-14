@@ -78,5 +78,8 @@ public:
     //定时器相关
     client_data *users_timer;
     Utils utils;
+
+private:
+    static const int SI = 1;
 };
 #endif

@@ -1,5 +1,5 @@
-#ifndef RBT_TIMER
-#define RBT_TIMER
+#ifndef TW_TIMER
+#define TW_TIMER
 
 #include <unistd.h>
 #include <signal.h>
@@ -30,56 +30,43 @@ struct client_data
 {
     sockaddr_in address;
     int sockfd;
+    char buf[128];
     util_timer *timer;
 };
 
 class util_timer
 {
 public:
-    time_t expire;
-    int64_t id;
-    bool operator<(const util_timer &t) {
-        if (expire != t.expire)
-        {
-            return expire < t.expire;
-        }
-        else
-        {
-            return id < t.id;
-        }
-    }
-    void (* cb_func)(client_data *);
+    util_timer(int rot, int ts):next(NULL), prev(NULL), rotation(rot), time_slot(ts){}
+
+public:
+    int rotation; // 记录定时器在时间轮转多少圈后生效
+    int time_slot; // 记录定时器属于时间轮上哪个槽对应的链表
+    
     client_data *user_data;
+    void (* cb_func)(client_data *);
+    util_timer* next; // 指向下一个定时器
+    util_timer* prev; // 指向前一个定时器
 };
 
-/*
-bool operator<(const util_timer &a, const util_timer &b)
-{
-    if (a.expire != b.expire)
-    {
-        return a.expire < b.expire;
-    }
-    else
-    {
-        return a.id < b.id;
-    }
-}
-*/
-
-class sort_timer_rbt
+class sort_timer_tw
 {
 public:
-    sort_timer_rbt();
-    ~sort_timer_rbt();
+    sort_timer_tw();
+    ~sort_timer_tw();
 
-    static int64_t getid();
-    void add_timer(util_timer *timer);
+    util_timer* add_timer(int expire, client_data *user_data, void (*cb_func)(client_data *));
+    void adjust_timer(int expire, util_timer *timer);
     bool del_timer(util_timer *timer);
     void tick();
 
 private:
-    set<util_timer*> timerset;
-    static int64_t gid;
+    static const int N = 120; // 时间轮上槽的数目
+    static const int SI = 1; // 每1s时间轮转动一次，即槽间隔为1s；
+
+    util_timer* slots[N];
+
+    int cur_slot; // 时间轮的当前槽
 };
 
 class Utils
@@ -109,7 +96,7 @@ public:
 
 public:
     static int *u_pipefd;
-    sort_timer_rbt m_timer_rbt;
+    sort_timer_tw m_timer_tw;
     static int u_epollfd;
     int m_TIMESLOT;
 };

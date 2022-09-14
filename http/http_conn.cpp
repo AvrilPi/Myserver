@@ -413,7 +413,6 @@ http_conn::HTTP_CODE http_conn::do_request()
         free(m_url_real);
 
         //将用户名和密码提取出来
-        //user=123&passwd=123
         char name[100], password[100];
         int i;
         for (i = 5; m_string[i] != '&'; ++i)

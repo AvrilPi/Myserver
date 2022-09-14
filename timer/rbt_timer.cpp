@@ -3,12 +3,16 @@
 
 sort_timer_rbt::sort_timer_rbt()
 {
-    timerset.clear();
+    if (!timerset.empty())
+    {
+	timerset.clear();
+    }
 }
 int64_t sort_timer_rbt::gid = 0;
 
 sort_timer_rbt::~sort_timer_rbt()
 {
+    /*
     auto iter = timerset.begin();
     while (iter != timerset.end())
     {
@@ -16,6 +20,8 @@ sort_timer_rbt::~sort_timer_rbt()
         timerset.erase(tmp);
         iter++;
     }
+    */
+    timerset.clear();
 }
 
 int64_t sort_timer_rbt:: getid() {
@@ -38,9 +44,17 @@ bool sort_timer_rbt::del_timer(util_timer *timer)
     {
         return false;
     }
+    if (timerset.empty())
+    {
+	return false;
+    }
     auto iter = timerset.find(timer);
     if (iter != timerset.end()) {
         timerset.erase(iter);
+	if (timerset.empty())
+	{
+	    timerset.clear();
+	}
         return true;
     }
     return false;
@@ -62,9 +76,14 @@ void sort_timer_rbt::tick()
             break;
         }
         (*iter)->cb_func((*iter)->user_data);
-        auto tmp = iter;
-        timerset.erase(tmp);
+        auto &tmp = iter;
+        //timerset.erase(tmp);
         iter++;
+	timerset.erase(tmp);
+    }
+    if (timerset.empty())
+    {
+	timerset.clear();
     }
 }
 
