@@ -1,27 +1,178 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>WebServer</title>
-    </head>
-    <body>
-    <br/>
-    <br/>
-    <div align="center"><font size="5"> <strong>是时候做出选择了</strong></font></div>
-	<br/>
-		<br/>
-		<form action="5" method="post">
- 			<div align="center"><button type="submit">xxx.jpg</button></div>
-                </form>
-		<br/>
-                <form action="6" method="post">
-                        <div align="center"><button type="submit" >xxx.avi</button></div>
-                </form>
-		<br/>
-		<form action="7" method="post">
- 			<div align="center"><button type="submit">关注我</button></div>
-                </form>
-		
-        </div>
-    </body>
+<head>
+<title>blog</title>
+<meta charset="UTF-8">
+<script src="https://kit.fontawesome.com/12210ab4a9.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_HTMLorMML-full"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+    box-sizing: border-box;
+}
+
+/* body 样式 */
+body {
+    font-family: Arial;
+    margin: 0;
+}
+
+/* 标题 */
+.header {
+    padding: 80px;
+    text-align: center;
+    background: #1abc9c;
+    color: white;
+}
+
+/* 标题字体加大 */
+.header h1 {
+    font-size: 40px;
+}
+
+/* 导航 */
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+}
+
+/* 导航栏样式 */
+.navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+/* 右侧链接*/
+.navbar a.right {
+    float: right;
+}
+
+/* 鼠标移动到链接的颜色 */
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* 列容器 */
+.row {  
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE10 */
+    flex-wrap: wrap;
+}
+
+/* 创建两个列 */
+/* 边栏 */
+.side {
+    -ms-flex: 30%; /* IE10 */
+    flex: 30%;
+    background-color: #f1f1f1;
+    padding: 20px;
+}
+
+/* 主要的内容区域 */
+.main {   
+    -ms-flex: 70%; /* IE10 */
+    flex: 70%;
+    background-color: white;
+    padding: 20px;
+}
+
+/* 测试图片 */
+.fakeimg {
+    background-color: #aaa;
+    width: 100%;
+    padding: 20px;
+}
+
+/* 底部 */
+.footer {
+    padding: 20px;
+    text-align: center;
+    background: #ddd;
+}
+
+/* 响应式布局 - 在屏幕设备宽度尺寸小于 700px 时, 让两栏上下堆叠显示 */
+@media screen and (max-width: 700px) {
+    .row {   
+        flex-direction: column;
+    }
+}
+
+/* 响应式布局 - 在屏幕设备宽度尺寸小于 400px 时, 让导航栏目上下堆叠显示 */
+@media screen and (max-width: 400px) {
+    .navbar a {
+        float: none;
+        width: 100%;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>PC的博客</h1>
+  <p><pre>while (true) knowledge++;</pre></p>
+</div>
+
+<div class="navbar">
+  <a href="#">文章</a>
+  <a href="6CGISQL.cgi">图片</a>
+  <a href="7CGISQL.cgi">关注我</a>
+</div>
+
+<div class="row">
+  <div class="side">
+      <h2>关于我</h2>
+      <i class="fa-regular fa-envelope" style="font-size:20px;"></i>  p183876@163.com
+      <br>
+      <br>
+      <i class="fa-solid fa-venus-mars"></i>  男
+      <br>
+      <br>
+      <i class="fa-solid fa-location-dot" style="font-size:20px;"></i> 江苏省南京市
+      <br>
+      <br>
+      <i class="fa-sharp fa-solid fa-school" aria-hidden="true" ></i> 南京师范大学
+      
+      <p>预备役程序员，算法爱好者，电子爱好者..</p>
+      <h3>更多内容</h3>
+      <p>专业技能</p>
+      <div class="fakeimg" style="height:60px;" >C/C++, Python</div><br>
+      <div class="fakeimg" style="height:60px;">算法与数据结构，网络编程，Linux开发</div><br>
+      <div class="fakeimg" style="height:60px;">机器学习，深度学习</div>
+  </div>
+  
+  <div class="main">
+      <h2>线段树</h2>
+      
+      <p style="text-align:justify;">线段树是常用的用来维护区间信息的数据结构。线段树可以在<span>`O(logn)`</span>的时间复杂度内实现单点修改、区间修改、区间查询操作。
+线段树所维护的信息，需要满足区间加法。区间加法：如果一个区间 <span>`[l, r]`</span>（线段树中一个点表示一个区间）满足区间加法的意思是一个区间<span>`[l, r]`</span>
+的线段树维护的信息（即区间最大值，区间最小值，区间和，区间 <span>`GCD`</span>等），可以由两个区间<span>`[l, mid]`</span>和<span>`[mid + 1, r]`</span>合并而来。</p>
+      <h5>线段树的基本特点：</h5>
+      <p style="text-align:justify;">线段树的每一个节点表示一个区间<br />
+      线段树的叶子节点表示的区间长度为1<br />
+      线段树有唯一根，表示的是线段树统计的总区间<br /><a href="8CGISQL.cgi">展开</a></p>
+      <br>
+      <h2>扩展中国剩余定理</h2>
+      <h5>等价转换</h5>
+      <p style="text-align:justify;">对于每两个式子：<br />
+      <span>`x = k_1 * a_1 + m_1`</span><br />
+      <span>`x = k_2 * a_2 + m_2`</span><br /><br/>
+      考虑将其合并：<br/>
+      <span>` k_1 * a_1 + m_1 = k_2 * a_2 + m_2`</span><br/><br/>
+      移项：<br/>
+      <span>` k_1 * a_1 + k_2 * (-a_2) = m_2 - m_1`</span><br/><br/>
+      因为要求<span>`x`</span>最小，而<span>`a, m`</span>都是正数。<br/><a href="9CGISQL.cgi">展开</a></p>
+  </div>
+</div>
+<div class="footer">
+  <h2></h2>
+</div>
+
+</body>
 </html>

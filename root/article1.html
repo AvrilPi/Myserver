@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>blog</title>
+<meta charset="UTF-8">
+<script src="https://kit.fontawesome.com/12210ab4a9.js" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+    box-sizing: border-box;
+}
+
+<style>
+h1 {
+	color: rgb(63, 63, 63);
+	font-family: "\5FAE\8F6F\96C5\9ED1";
+	font-size: 18px;
+}
+
+h2 {
+	color: rgb(63, 63, 63);
+	font-family: "\5FAE\8F6F\96C5\9ED1";
+	font-size: 16px;
+}
+
+h3 {
+	color: rgb(63, 63, 63);
+	font-family: "\5FAE\8F6F\96C5\9ED1";
+	font-size: 16px;
+}
+
+h4 {
+	color: rgb(73, 73, 73);
+	font-family: "\5FAE\8F6F\96C5\9ED1";
+	font-size: 16px;
+}
+
+p {
+	color: rgb(73, 73, 73);
+	font-family: "\5FAE\8F6F\96C5\9ED1";
+	font-size: 16px;
+}
+
+li {
+	color: rgb(73, 73, 73);
+	font-family: "\5FAE\8F6F\96C5\9ED1";
+	font-size: 16px;
+}
+
+/* body 样式 */
+body {
+    font-family: Arial;
+    margin: 0;
+}
+
+/* 标题 */
+.header {
+    padding: 80px;
+    text-align: center;
+    background: #1abc9c;
+    color: white;
+}
+
+/* 标题字体加大 */
+.header h1 {
+    font-size: 40px;
+}
+
+/* 导航 */
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+}
+
+/* 导航栏样式 */
+.navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+/* 右侧链接*/
+.navbar a.right {
+    float: right;
+}
+
+/* 鼠标移动到链接的颜色 */
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+/* 鼠标移动到链接的颜色 */
+.navbar form:hover {
+    background-color: #ddd;
+    color: black;
+}
+.basic-grey .button {
+background: #E27575;
+border: none;
+padding: 10px 25px 10px 25px;
+color: #FFF;
+box-shadow: 1px 1px 5px #B6B6B6;
+border-radius: 3px;
+text-shadow: 1px 1px 1px #9E3F3F;
+cursor: pointer;
+}
+.basic-grey .button:hover {
+background: #CF7A7A
+}
+
+/* 列容器 */
+.row {  
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE10 */
+    flex-wrap: wrap;
+}
+
+/* 创建两个列 */
+/* 边栏 */
+.side {
+    -ms-flex: 30%; /* IE10 */
+    flex: 30%;
+    background-color: #f1f1f1;
+    padding: 20px;
+}
+
+/* 主要的内容区域 */
+.main {   
+    -ms-flex: 70%; /* IE10 */
+    flex: 70%;
+    background-color: white;
+    padding: 20px;
+}
+
+/* 测试图片 */
+.fakeimg {
+    background-color: #aaa;
+    width: 100%;
+    padding: 20px;
+}
+
+/* 底部 */
+.footer {
+    padding: 20px;
+    text-align: center;
+    background: #ddd;
+}
+
+/* 响应式布局 - 在屏幕设备宽度尺寸小于 700px 时, 让两栏上下堆叠显示 */
+@media screen and (max-width: 700px) {
+    .row {   
+        flex-direction: column;
+    }
+}
+
+/* 响应式布局 - 在屏幕设备宽度尺寸小于 400px 时, 让导航栏目上下堆叠显示 */
+@media screen and (max-width: 400px) {
+    .navbar a {
+        float: none;
+        width: 100%;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>线段树</h1>
+</div>
+
+<div class="navbar">
+    <a href="5CGISQL.cgi">文章</a>
+    <a href="6CGISQL.cgi">图片</a>
+    <a href="7CGISQL.cgi">关注我</a>
+</div>
+
+
+  <div class="main" style="width: 900px; justify-content: center; align-items: center; margin: auto;">
+      <h2>线段树的基本操作（以区间和为例）</h2>
+      <h5>建立线段树</h5>
+      <p>递归遍历整个区间，记录遍历的所有节点，如果节点表示的区间不是叶子节点，那么就分别递归遍历左子树和右子树，
+       否则记录下要表示的区间和线段树维护的信息</p>
+      <h7>代码</h7>
+      <pre> 
+           struct Segment_Tree {
+               int l, r;
+               long long sum;
+           } tr[N * 4];
+           
+           void push_up(int u) {
+               tr[u].sum = tr[u << 1].sum + tr[u << 1 | 1].sum;
+           }
+
+           void build(int u, int l, int r) {
+               if (l == r) {
+                   tr[u] = {l, r, a[l]};
+                   return;
+               }
+               tr[u] = {l, r};
+               int mid = l + r >> 1;
+               build(u << 1, l, mid), build(u << 1 | 1, mid + 1, r);
+               push_up(u);
+           }
+      </pre>
+      <h5>单点修改</h5>
+      <p>通过二分查找的形式找到要修改的点</p>
+      <h7>代码</h7>
+      <pre> 
+           void modify (int u,int x,int d) {
+               if (tr[u].l == tr[u].r) {
+                   tr[u].sum = d; 
+                   return ;
+               }
+               int mid = tr[u].l + tr[u].r >> 1;
+               if (x <= mid) modify (u << 1,x,d); 
+               else modify (u << 1 | 1,x,d);
+               push_up (u)
+           }
+      </pre>
+      <h5>区间修改</h5>
+      <p>我们从根节点（根节点一定包含所有点，既包含修改区间）出发，一直往下走，直到当前区间中的元素全部都是被修改元素。<br/>
+        当左区间包含整个被修改区间时，我们就递归到左区间；<br/>
+        当右区间包含整个被修改区间时，我们就递归到右区间；</p>
+      <h7>代码</h7>
+      <pre> 
+        void push_down (int u) {
+            auto &root = tr[u],&left = tr[u << 1],&right = tr[u << 1 | 1];
+            if (root.sum_tag) {
+                left.tag += root.tag,left.sum += (long long)(left.r - left.l + 1) * root.tag;
+                right.tag += root.tag,right.sum += (long long)(right.r - right.l + 1) * root.tag;
+                root.tag = 0;
+            }
+        }
+        void modify (int u,int l,int r,int d) {
+            if (l <= tr[u].l && tr[u].r <= r) {
+                tr[u].sum += (LL)(tr[u].r - tr[u].l + 1) * d;
+                tr[u].sum_tag += d;
+                return ;
+            }
+            push_down (u);
+            int mid = tr[u].l + tr[u].r >> 1;
+            if (l <= mid) modify (u << 1,l,r,d);
+            if (r >= mid + 1) modify (u << 1 | 1,l,r,d);
+            push_up (u);
+        }
+      </pre>
+      <h5>区间查询</h5>
+      <p>类似于区间修改</p>
+      <h7>代码</h7>
+      <pre> 
+        long long query_sum (int u,int l,int r) {
+            if (l <= tr[u].l && tr[u].r <= r) return tr[u].sum;
+            push_down (u);  //在递归之前一定要分裂
+            int mid = l + r >> 1;
+            long long sum = 0;
+            if (l <= mid) sum += query_sum (u << 1,l,r);  //左半边有被查询到的数据，就递归左半边
+            if (r >= mid + 1) sum += query_sum (u << 1 | 1,l,r);  //右半边有被查询到的数据，就递归右半边
+            return sum;
+        }
+      </pre>
+  </div>
+</div>
+
+<div class="footer">
+  <h2>手撕线段树！</h2>
+</div>
+
+</body>
+</html>

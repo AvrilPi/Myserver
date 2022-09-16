@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>blog</title>
+<meta charset="UTF-8">
+<script src="https://kit.fontawesome.com/12210ab4a9.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_HTMLorMML-full"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+    box-sizing: border-box;
+}
+
+/* body 样式 */
+body {
+    font-family: Arial;
+    margin: 0;
+}
+
+/* 标题 */
+.header {
+    padding: 80px;
+    text-align: center;
+    background: #1abc9c;
+    color: white;
+}
+
+/* 标题字体加大 */
+.header h1 {
+    font-size: 40px;
+}
+
+/* 导航 */
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+}
+
+/* 导航栏样式 */
+.navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+/* 右侧链接*/
+.navbar a.right {
+    float: right;
+}
+
+/* 鼠标移动到链接的颜色 */
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+/* 鼠标移动到链接的颜色 */
+.navbar form:hover {
+    background-color: #ddd;
+    color: black;
+}
+.basic-grey .button {
+background: #E27575;
+border: none;
+padding: 10px 25px 10px 25px;
+color: #FFF;
+box-shadow: 1px 1px 5px #B6B6B6;
+border-radius: 3px;
+text-shadow: 1px 1px 1px #9E3F3F;
+cursor: pointer;
+}
+.basic-grey .button:hover {
+background: #CF7A7A
+}
+
+/* 列容器 */
+.row {  
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE10 */
+    flex-wrap: wrap;
+}
+
+/* 创建两个列 */
+/* 边栏 */
+.side {
+    -ms-flex: 30%; /* IE10 */
+    flex: 30%;
+    background-color: #f1f1f1;
+    padding: 20px;
+}
+
+/* 主要的内容区域 */
+.main {   
+    -ms-flex: 70%; /* IE10 */
+    flex: 70%;
+    background-color: white;
+    padding: 20px;
+}
+
+/* 测试图片 */
+.fakeimg {
+    background-color: #aaa;
+    width: 100%;
+    padding: 20px;
+}
+
+/* 底部 */
+.footer {
+    padding: 20px;
+    text-align: center;
+    background: #ddd;
+}
+
+/* 响应式布局 - 在屏幕设备宽度尺寸小于 700px 时, 让两栏上下堆叠显示 */
+@media screen and (max-width: 700px) {
+    .row {   
+        flex-direction: column;
+    }
+}
+
+/* 响应式布局 - 在屏幕设备宽度尺寸小于 400px 时, 让导航栏目上下堆叠显示 */
+@media screen and (max-width: 400px) {
+    .navbar a {
+        float: none;
+        width: 100%;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>扩展中国剩余定理</h1>
+</div>
+
+<div class="navbar">
+    <a href="5CGISQL.cgi">文章</a>
+    <a href="6CGISQL.cgi">图片</a>
+    <a href="7CGISQL.cgi">关注我</a>
+</div>
+
+
+  <div class="main" style="width: 900px; justify-content: center; align-items: center; margin: auto;">
+      <p>用扩展欧几里得算法找出一组解，如果<span>`gcd(a_1, -a_2)`</span>不能整除<span>`m_2 - m_1`</span>，则无解，
+        否则存在一组解<span>`k_1^', k_2^'`</span>使得：<br/>
+        <span>`k_1^' * a_1 + k_2^' * (-a_2) = gcd(a_1, -a_2)`</span><br/>
+        只需将<span>`k_1^', k_2^'`</span>扩大<span>`(m_2 - m_1) / gcd(a_1, -a_2)`</span>倍数，就可以找到原方程的一组解</p>
+
+      <h5>最小非负整数解</h5>
+      <p>要找到原方程的非负整数解，只需要让<br/>
+      <span>`k_1 = k_1 % abs(a_2 / gcd(a_1, -a_2))`</span><br/>
+      <span>`k_2 = k_2 % abs(a_1 / gcd(a_1, -a_2))`</span><br/>
+      此时，新的x为：<br/>
+      <span>`x = (k_1 + k * a_2 / gcd(a_1, -a_2)) * a_1 + m_1`</span><br/>
+      <span>`= k_1 * a_1 + m_1 + k * lcm(a_1, a_2)`</span><br/>
+      每次考虑合并两个式子，合并<span>n - 1</span>次后变为一个式子，最后剩下的式子满足我们的答案。</p>
+      <h7>代码</h7>
+      <pre> 
+        #include <iostream>
+        using namespace std;
+        typedef long long LL;
+        int n;
+        LL exgcd(LL a, LL b, LL &x, LL &y){
+            if(b == 0){
+                x = 1, y = 0;
+                return a;
+            }
+        
+            LL d = exgcd(b, a % b, y, x);
+            y -= a / b * x;
+            return d;
+        }
+        LL inline mod(LL a, LL b){
+            return ((a % b) + b) % b;
+        }
+        int main(){
+            cin >> n;
+            LL a1, m1;
+            cin >> a1 >> m1;
+            for(int i = 1; i < n; i++){
+                LL a2, m2, k1, k2;
+                cin >> a1 >> m2;
+                LL d = exgcd(a1, -a2, k1, k2);
+                if((m2 - m1) % d){ puts("-1"); return 0; }
+                k1 = mod(k1 * (m2 - m1) / d, abs(a2 / d));
+                m1 = k1 * a1 + m1;
+                a1 = abs(a1 / d * a2);
+            }
+            cout << m1 << endl;
+            return 0;
+        }
+      </pre>
+  </div>
+</div>
+</body>
+</html>
